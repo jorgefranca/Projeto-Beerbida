@@ -1,7 +1,10 @@
 package com.projeto.beerbida.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Cerveja {
-	//atributos
+	
+	@NotBlank //verifica se o campo é nulo (retira espaços)
 	private String sku;
 	private String nome;
 	
