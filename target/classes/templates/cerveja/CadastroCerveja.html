@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns = "http://www.w3.org.1999/xhtml">
+<html xmlns = "http://www.w3.org.1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
 
 <body>
 
@@ -10,6 +11,9 @@
 </body>
 
 	<form method = "POST">
+	<!-- th é referente ao thymeleaf -->
+		<span th:text="${mensagem}"></span>
+		<br>
 		<label for = "sku">SKU</label>
 		<input type = "text" id = "sku" name = "sku">
 		<br>
