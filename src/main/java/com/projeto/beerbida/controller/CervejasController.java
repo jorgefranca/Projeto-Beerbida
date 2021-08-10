@@ -18,7 +18,9 @@ public class CervejasController {
 	 */
 	@RequestMapping("/cervejas/novo")
 	//forward: chega a requisição e já encaminha 
-	public String novo(){
+	//public String novo(Model model){
+	public String novo(Cerveja cerveja){
+		//model.addAttribute(new Cerveja());
 		return "cerveja/CadastroCerveja";
 	}
 	//o spring já cria o objeto com os parâmetros que queremos.
@@ -26,15 +28,13 @@ public class CervejasController {
 	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
 	public String cadastrar( @Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attributes){
 		if(result.hasErrors()){
-			model.addAttribute("mensagem", "Erro no formulário");
-			return "cerveja/CadastroCerveja";
-			// return ...
+			return novo(cerveja);
+			//model.addAttribute(cerveja);
+			//return "cerveja/CadastroCerveja";
 		}
 			// salvar no banco de dados...
 		attributes.addFlashAttribute("mensagem", "Cerveja cadastrada com sucesso!");
-		System.out.println("Cerveja cadastrada com sucesso!");
-		System.out.println("SKU: " + cerveja.getSku());
-		System.out.println("NOME: " + cerveja.getNome());	
+		System.out.println("Cerveja cadastrada com sucesso!");	
 		
 		return "redirect:/cervejas/novo";
 		

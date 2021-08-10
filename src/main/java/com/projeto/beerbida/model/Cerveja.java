@@ -5,10 +5,13 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class Cerveja {
-	@NotBlank //verifica se o campo é nulo (retira espaços)
+	@NotBlank(message = "SKU é obrigatório") //verifica se o campo é nulo (retira espaços)
 	private String sku;
+	
+	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
-	@Size(max=50)@NotBlank
+	
+	@Size(min = 1, max = 50, message = "Tamanho da decrição deve ser maior que 1 e menor que 50 caracteres")
 	private String descricao;
 	
 	

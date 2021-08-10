@@ -4,26 +4,31 @@
 
 <body>
 
-	<h1> Essa mensagem indica que o thymeleaf foi configurado corretamente</h1>
-	<h1>--------------------------------------------------------------</h1>
-	<h1>							Projeto 'Beerbida' em desenvolvimento							</h1>
-
+	<h1> Cadastro de cervejas</h1>
+	<hr>
+	<h2>Pojeto 'Beerbida' em desenvolvimento</h2>
+	<h3> Desenvolvido por JorgeF</h3>
 </body>
 
-	<form method = "POST">
-	<!-- th È referente ao thymeleaf -->
+	<form method = "POST" th:object=${cerveja}>
+	<!-- th ÔøΩ referente ao thymeleaf -->
+	<!-- <span th:text="${#fields.hasAnyErrors()}"></span> -->
+		<div th:each="erro:${#fields.detailedErrors()}">
+			<span style="color:red" th:text="${erro.message}"></span>
+		</div>
 		<span th:text="${mensagem}"></span>
 		<br>
+		<br>
 		<label for = "sku">SKU</label>
-		<input type = "text" id = "sku" name = "sku">
+		<input type = "text" id = "sku" th:field="*{sku}">
 		<br>
-		
+		<br>
 		<label for = "nome">NOME</label>
-		<input type = "text" id = "nome" name = "nome">
+		<input type = "text" id = "nome" th:field = "*{nome}">
 		<br>
-		
-		<label for = "nome">DESCRI«√O</label>
-		<input type = "text" id = "descricao" name = "descricao">
+		<br>
+		<label for = "nome">DESCRI√á√ÉO</label>
+		<input type = "text" id = "descricao" th:field = "*{descricao}">
 		<br>
 		
 		<input type = "submit" value = "Salvar">
